@@ -4,6 +4,7 @@ import {  } from 'rxjs';
 // @ts-ignore
 import * as moment from 'moment';
 import {shareReplay, tap} from "rxjs/operators";
+import {Document} from "../model/document";
 
 const BASEURL = "http://157.26.82.44:2240/document/";
 
@@ -28,7 +29,7 @@ export class AuthServiceService {
   getDocumentDisplay(docId:string){
     const lastRouteElem = "display"
     var routeApi = `${BASEURL}${docId}/${lastRouteElem}`;
-    return this.http.get(routeApi);
+    return this.http.get<Document>(routeApi);
   }
   getDocumentMetaData(docId:string){
     const lastRouteElem = "metadata"

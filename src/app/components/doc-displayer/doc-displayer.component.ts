@@ -25,7 +25,7 @@ export class DocDisplayerComponent implements OnInit {
   searchDoc() {
     const val = this.form.value;
     if(val.docId != null){
-      this.authService.getDocumentDisplay(val.docId).subscribe(value => {this.base64 = value.toString();this.pdfB64Loaded=true;});
+      this.authService.getDocumentDisplay(val.docId).subscribe(value => {this.base64 = value.file;this.pdfB64Loaded=true;});
       this.authService.getDocumentMetaData(val.docId).subscribe(value => {this.metadata = value.toString();this.metadataLoaded=true;});
 
     }
