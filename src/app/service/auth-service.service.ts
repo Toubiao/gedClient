@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import {shareReplay, tap} from "rxjs/operators";
 import {Document} from "../model/document";
 
-const BASEURL = "http://157.26.82.44:2240/document/";
+const BASEURL = "http://157.26.82.44:2240/api/document/";
 
 @Injectable({
   providedIn: 'root'

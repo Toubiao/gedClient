@@ -25,8 +25,28 @@ export class DocDisplayerComponent implements OnInit {
   searchDoc() {
     const val = this.form.value;
     if(val.docId != null){
-      this.authService.getDocumentDisplay(val.docId).subscribe(value => {this.base64 = value.file;this.pdfB64Loaded=true;});
-      this.authService.getDocumentMetaData(val.docId).subscribe(value => {this.metadata = value.toString();this.metadataLoaded=true;});
+      this.authService.getDocumentDisplay(val.docId).subscribe(value => {
+        let url = window.URL.createObjectURL(value.file);
+        let a = document.createElement('a');
+        document.body.appendChild(a);
+        a.setAttribute('style', 'display: none');
+        a.href = url;
+        a.download = value.filename;
+        a.click();
+        window.URL.revokeObjectURL(url);
+        a.remove();
+      });
+      this.authService.getDocumentMetaData(val.docId).subscribe(value => {
+        let url = window.URL.createObjectURL(value);
+        let a = document.createElement('a');
+        document.body.appendChild(a);
+        a.setAttribute('style', 'display: none');
+        a.href = url;
+        a.download = "metadata"+val.docId+".json";
+        a.click();
+        window.URL.revokeObjectURL(url);
+        a.remove();
+      });
 
     }
 
