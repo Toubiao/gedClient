@@ -1,0 +1,16 @@
+<form [formGroup]="form">
+<input type="text" class="form-control" formControlName="docId" id="docId" name="docId" aria-describedby="docId" placeholder="Enter document">
+<button type="submit" (click)="searchDoc()"> Rechercher </button>
+</form>
+<ngx-extended-pdf-viewer *ngIf="isPdf()"
+                         [base64Src]="base64"
+                         backgroundColor="#ffffff"
+                         [height]="'90vh'"
+                         [useBrowserLocale]="true"
+                         [handTool]="false"
+                         [showHandToolButton]="true"
+>
+</ngx-extended-pdf-viewer>
+<ngx-json-viewer *ngIf="isMetadata()" [json]="metadata">
+
+</ngx-json-viewer>
