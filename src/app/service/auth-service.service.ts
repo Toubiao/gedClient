@@ -29,7 +29,7 @@ export class AuthServiceService {
   getDocumentDisplay(docId:string){
     const lastRouteElem = "display"
     var routeApi = `${BASEURL}${docId}/${lastRouteElem}`;
-    return this.http.get<Document>(routeApi);
+    return this.http.get<any>(routeApi);
   }
   getDocumentMetaData(docId:string){
     const lastRouteElem = "metadata"
